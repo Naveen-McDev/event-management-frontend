@@ -1,10 +1,13 @@
+// importing types
 import types from "../types";
 
+// inital state
 const initialState = {
   events: [],
   activeEvent: null,
 };
 
+// calender Reducer
 const calendarReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.eventLoaded:

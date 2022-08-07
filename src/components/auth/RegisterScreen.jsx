@@ -6,7 +6,9 @@ import { removeError, setError } from "../../actions/ui";
 import useForm from "../../hooks/useForm";
 import Alert from "../ui/Alert";
 
+// register screen
 const RegisterScreen = () => {
+  // importing useDispatch
   const dispatch = useDispatch();
   const { msgError } = useSelector((state) => state.ui);
   const [formValues, handleInputChange] = useForm({
@@ -17,22 +19,30 @@ const RegisterScreen = () => {
   });
   const { name, email, password, password2 } = formValues;
 
+  // handle register
   const handleRegister = (e) => {
+    // preventing the default action
     e.preventDefault();
+    // start register
     if (isFormValid()) dispatch(startRegister(name, email, password));
   };
 
+  // is form valid
   const isFormValid = () => {
     if (name.trim().length === 0) {
+      // set error
       dispatch(setError("Name is required"));
       return false;
     } else if (name.trim().length > 32) {
+       // set error
       dispatch(setError("Name length must be max 32 characters"));
       return false;
     } else if (!validator.isEmail(email)) {
+       // set error
       dispatch(setError("Email is not valid"));
       return false;
     } else if (
+      // is strong password
       !validator.isStrongPassword(password.toString()) ||
       password.length > 32
     ) {
@@ -43,9 +53,11 @@ const RegisterScreen = () => {
       );
       return false;
     } else if (password !== password2) {
+      // set error
       dispatch(setError("Passwords should match"));
       return false;
     }
+    // remove error
     dispatch(removeError());
     return true;
   };

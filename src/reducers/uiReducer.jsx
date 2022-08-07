@@ -1,10 +1,13 @@
+// imporing types 
 import types from "../types";
 
+// inital state
 const initialState = {
   modalOpen: false,
   msgError: ""
 };
 
+// ui reducer
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.uiSetError:

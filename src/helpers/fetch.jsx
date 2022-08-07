@@ -1,5 +1,7 @@
+// URL form .env
 const baseUrl = process.env.REACT_APP_API_URL;
 
+// fetch no token
 export const fetchNoToken = (endpoint, data, method = "GET") => {
   const url = `${baseUrl}/${endpoint}`; // localhost:5000/api/events
 
@@ -16,6 +18,7 @@ export const fetchNoToken = (endpoint, data, method = "GET") => {
   }
 };
 
+// fetch with token
 export const fetchWithToken = (endpoint, data, method = "GET") => {
   const url = `${baseUrl}/${endpoint}`; // localhost:5000/api/events
   const token = localStorage.getItem("token") || "";

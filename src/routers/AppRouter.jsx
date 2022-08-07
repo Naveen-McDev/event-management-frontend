@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { startChecking } from "../actions/auth";
 import LoadingScreen from "../components/ui/LoadingScreen";
 
+// app router
 const AppRouter = () => {
   const dispatch = useDispatch();
   const { checking, id } = useSelector((state) => state.auth);
@@ -16,7 +17,7 @@ const AppRouter = () => {
     dispatch(startChecking());
   }, [dispatch]);
 
-
+// show loading screen while checking
   if (checking){
     return <LoadingScreen />
   }

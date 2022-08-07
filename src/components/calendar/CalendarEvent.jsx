@@ -1,4 +1,5 @@
 const CalendarEvent = ({ event }) => {
+  // destructure
   const { title, user } = event;
 
   return (

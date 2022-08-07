@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// use form
 const useForm = (initialState = {}) => {
   const [values, setValues] = useState(initialState);
 
@@ -7,6 +8,7 @@ const useForm = (initialState = {}) => {
     setValues(initialState);
   };
 
+  // handle input change
   const handleInputChange = ({ target }) => {
     setValues({
       ...values,

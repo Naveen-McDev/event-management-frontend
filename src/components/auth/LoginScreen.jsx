@@ -6,7 +6,9 @@ import { startLogin } from "../../actions/auth";
 import Alert from "../ui/Alert";
 import { removeError, setError } from "../../actions/ui";
 
+// login screen
 const LoginScreen = () => {
+  // importing usedispatch
   const dispatch = useDispatch();
   const { msgError } = useSelector((state) => state.ui);
   const [formValues, handleInputChange] = useForm({
@@ -15,19 +17,26 @@ const LoginScreen = () => {
   });
   const { email, password } = formValues;
 
+  // handle login
   const handleLogin = (e) => {
+    // preventing the default action
     e.preventDefault();
+    // start login
     if (isFormValid()) dispatch(startLogin(email, password));
   };
 
+  // is form valid
   const isFormValid = () => {
     if (!validator.isEmail(email)) {
+      // set error
       dispatch(setError("Email is not valid"));
       return false;
     } else if (password.trim().length === 0) {
+      // set error
       dispatch(setError("Password is required"));
       return false;
     }
+    // remove error
     dispatch(removeError());
     return true;
   };

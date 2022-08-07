@@ -1,3 +1,4 @@
+// types
 const types = {
   authCheckingFinish: "[Auth] Finish checking",
   authLogin: "[Auth] Login",

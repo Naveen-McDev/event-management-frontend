@@ -4,10 +4,12 @@ import LogoutIcon from "./icons/LogoutIcon";
 import UserIcon from "./icons/UserIcon";
 import "./ui.css";
 
+// navbar 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { name } = useSelector((state) => state.auth);
 
+  // handle logout
   const handleLogout = () => {
     dispatch(startLogout());
   };
@@ -18,6 +20,10 @@ const Navbar = () => {
         <div className="navbar__item">
           <UserIcon />
           <p className="navbar__text">{name}</p>
+        </div>
+        <div className="navbar__item">
+          
+          <p className="navbar__text">MANAGE YOUR EVENTS WITH ZEN</p>
         </div>
         <div className="navbar__item">
           <LogoutIcon

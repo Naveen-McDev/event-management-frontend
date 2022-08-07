@@ -3,9 +3,11 @@ import Swal from "sweetalert2";
 import { eventStartDelete } from "../../actions/event";
 import DeleteIcon from "./icons/DeleteIcon";
 
+// delete button
 const DeleteBtn = () => {
   const dispatch = useDispatch();
 
+  // handle click delete
   const handleClickDelete = () => {
     Swal.fire({
       title: "Delete event",

@@ -15,7 +15,7 @@ Modal.setAppElement("#root");
 
 const nowInitial = moment().minutes(0).seconds(0).add(1, "hour");
 const nowEnd = nowInitial.clone().add(1, "hour");
-
+// initialvalue
 const initEvent = {
   title: "",
   notes: "",
@@ -23,6 +23,7 @@ const initEvent = {
   end: nowEnd.toDate(),
 };
 
+// calender modal
 const CalendarModal = () => {
   const dispatch = useDispatch();
 
@@ -41,6 +42,7 @@ const CalendarModal = () => {
     }
   }, [activeEvent]);
 
+  // handle input change
   const handleInputChange = ({ target }) => {
     setFormValues({
       ...formValues,
@@ -48,6 +50,7 @@ const CalendarModal = () => {
     });
   };
 
+  // close modal
   const closeModal = () => {
     if (modalOpen) {
       dispatch(eventClearActive());
@@ -55,6 +58,7 @@ const CalendarModal = () => {
     }
   };
 
+  // handle start date change
   const handleStartDateChange = (e) => {
     setFormValues({
       ...formValues,
@@ -62,6 +66,7 @@ const CalendarModal = () => {
     });
   };
 
+  // handle end date change
   const handleEndDateChange = (e) => {
     setFormValues({
       ...formValues,
@@ -69,7 +74,9 @@ const CalendarModal = () => {
     });
   };
 
+  // handle submit
   const handleSubmit = (e) => {
+    // prevent dafault action
     e.preventDefault();
 
     if (!isFormValid()) return;
@@ -85,20 +92,26 @@ const CalendarModal = () => {
     closeModal();
   };
 
+  // is form valid
   const isFormValid = () => {
     if (title.trim().length === 0) {
+       // set error
       dispatch(setError("Title is required"));
       return false;
     } else if (title.trim().length > 32) {
+       // set error
       dispatch(setError("Title length must be max 32 characters"));
       return false;
     } else if (moment(start).isSameOrAfter(moment(end))) {
+       // set error
       dispatch(setError("End date must be after start date"));
       return false;
     } else if (notes && notes.trim().length > 128) {
+       // set error
       dispatch(setError("Notes length must be max 128 characters"));
       return false;
     }
+    // remove error
     dispatch(removeError());
     return true;
   };

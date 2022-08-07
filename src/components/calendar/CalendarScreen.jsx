@@ -18,8 +18,10 @@ import {
 import AddNewBtn from "../ui/AddNewBtn";
 import DeleteBtn from "../ui/DeleteBtn";
 
+// localizer
 const localizer = momentLocalizer(moment);
 
+// calender screen
 const CalendarScreen = () => {
   const dispatch = useDispatch();
   const { calendar, auth, ui } = useSelector((state) => state);
@@ -30,23 +32,30 @@ const CalendarScreen = () => {
     localStorage.getItem("lastView") || "month"
   );
 
+  
   useEffect(() => {
+    // event start loading
     dispatch(eventStartLoading());
   }, [dispatch]);
 
+  // on double click
   const onDoubleClick = (e) => {
+
     dispatch(uiOpenModal());
   };
 
+  // on select
   const onSelect = (e) => {
     dispatch(eventSetActive(e));
   };
 
+  // on view change
   const onViewChange = (e) => {
     setLastView(e);
     localStorage.setItem("lastView", e);
   };
 
+  // onselect slot
   const onSelectSlot = (e) => {
     activeEvent && dispatch(eventClearActive());
     if (e.action === "select" || e.action === "doubleClick") {
@@ -62,6 +71,7 @@ const CalendarScreen = () => {
     }
   };
 
+  // event style getter
   const eventStyleGetter = (event, start, end, isSelected) => {
     const style = {
       backgroundColor: id === event.user._id ? "#367CF7" : "#465660",

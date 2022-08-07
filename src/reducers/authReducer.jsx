@@ -1,9 +1,12 @@
+// importing types
 import types from "../types";
 
+// initial state
 const initialState = {
   checking: true,
 };
 
+// auth reducer
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.authLogin:

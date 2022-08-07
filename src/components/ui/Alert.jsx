@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+// alert
 const Alert = ({ type, description }) => {
   return (
     <div className={`alert alert__${type}`}>

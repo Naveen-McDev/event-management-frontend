@@ -1,5 +1,6 @@
 import moment from "moment";
 
+// prepare events
 export const prepareEvents = (events = []) => {
   return events.map((e) => {
     let { _id: id, ...event } = e;
